@@ -8,8 +8,8 @@
 
 ; If any version below the specified version is used for compiling, 
 ; this error will be shown.
-#if VER < EncodeVer(5,5,2)
-  #error You must use Inno Setup 5.5.2 or newer to compile this script
+#if VER < EncodeVer(5,4,3)
+  #error You must use Inno Setup 5.4.3 or newer to compile this script
 #endif
 
 #define MyAppInstallerName "Hype: The Time Quest - Alternate Installer"
@@ -86,10 +86,22 @@ Source: "{code:GetSourceDrive}DSETUP.DLL"; DestDir: "{app}"; Flags: external ign
 Source: "{code:GetSourceDrive}DSETUP16.DLL"; DestDir: "{app}"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}DSETUP32.DLL"; DestDir: "{app}"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}Hype.ico"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Mfc40.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Mfc40u.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Mfc42.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Mfc42u.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Mfcans32.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Msvcirt.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Msvcp50.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Msvcrt.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Msvcrt20.dll"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}exe\DLL MFC\Msvcrt40.dll"; DestDir: "{app}"; Flags: external ignoreversion
 
 ; Game folders
 Source: "{code:GetSourceDrive}DLL\*"; DestDir: "{app}\DLL\"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}Gamedata\*"; DestDir: "{app}\Gamedata\"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}Gamedata\Videos\*"; DestDir: "{app}\Gamedata\Videos"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}Gamedata\Options\*"; DestDir: "{app}\Gamedata\Options"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}Gamedata\World\Levels\*"; DestDir: "{app}\Gamedata\World\Levels"; Flags: external ignoreversion recursesubdirs
 Source: "{code:GetSourceDrive}Gamedata\World\Sound\*"; DestDir: "{app}\Gamedata\World\Sound"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}InstData\*"; DestDir: "{app}\InstData\"; Flags: external ignoreversion
@@ -123,9 +135,7 @@ Source: "{code:GetSourceDrive}InstData\strings.ger"; DestDir: "{win}\UbiSoft"; F
 
  
 ; Install stuff
-Source: "Stuff\Comp\*"; DestDir: "{app}\Comp\";
 Source: "Stuff\Config\ubi.ini"; DestDir: "{win}\UbiSoft"; Flags: ignoreversion uninsneveruninstall
-Source: "Stuff\nGlide103_setup.exe"; DestDir: "{app}"; Flags: ignoreversion deleteafterinstall
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\Hype.ico";Comment: "Hype - The Time Quest (3dfx - recommended)";
@@ -141,7 +151,6 @@ Name: "{group}\Websites\Hype Forever"; Filename: "http://hypeforever.webs.com/"
 [Tasks]
 ; Create a desktop icon, run with administrator rights
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}";
-Name: "nglide"; Description: "Install nGlide";
 
 [INI]
 Filename: "{win}\UbiSoft\ubi.ini"; Section: "Hype - The Time Quest"; Key: "Directory"; String: "{app}";
@@ -149,10 +158,6 @@ Filename: "{win}\UbiSoft\ubi.ini"; Section: "Hype - The Time Quest"; Key: "Direc
 Filename: "{win}\UbiSoft\ubi.ini"; Section: "Hype - The Time Quest"; Key: "Language"; String: "French"; Components: language\french
 Filename: "{win}\UbiSoft\ubi.ini"; Section: "Hype - The Time Quest"; Key: "Language"; String: "German"; Components: language\german 
 Filename: "{win}\UbiSoft\ubi.ini"; Section: "Hype - The Time Quest"; Key: "Language"; String: "Polish"; Components: language\polish
-
-[Run]
-Filename: "{app}\Comp\PatchInstall.bat"; StatusMsg: "Installing Compatibility Fixes"; Flags: runascurrentuser
-Filename: "{app}\nGlide103_setup.exe"; StatusMsg: "Installing nGlide"; Flags: runascurrentuser; Tasks: nglide
 
 
 [UninstallDelete]
