@@ -26,7 +26,7 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 VersionInfoVersion={#MyAppInstallerVersion}
 AppPublisher={#MyAppPublisher}
-AppCopyright=© 1999 {#MyAppPublisher}
+AppCopyright=  1999 {#MyAppPublisher}
 LicenseFile=license.md
 ; Start menu/screen and Desktop shortcuts
 DefaultDirName={sd}\Games\{#MyAppNameNoR}
@@ -79,6 +79,8 @@ Name: "language\english"; Description: "English"; Types: Full; Flags: exclusive
 Name: "language\french"; Description: "French (not tested!)"; Flags: exclusive
 Name: "language\german"; Description: "German"; Flags: exclusive
 Name: "language\polish"; Description: "Polish"; Flags: exclusive
+Name: "language\portuguese"; Description: "Portuguese (not tested!)"; Flags: exclusive
+Name: "language\spanish"; Description: "Spanish (not tested!)"; Flags: exclusive
 
 [Files]
 ; Root folder
@@ -118,6 +120,12 @@ Source: "{code:GetSourceDrive}LangData\German\world\levels\*"; DestDir: "{app}\G
 ; Localization - Polish
 Source: "{code:GetSourceDrive}Gamedata\World\Sound\Polish\*"; DestDir: "{app}\Gamedata\World\Sound"; Flags: external ignoreversion recursesubdirs; Components: language\polish 
 Source: "{code:GetSourceDrive}LangData\Polish\world\levels\*"; DestDir: "{app}\Gamedata\World\levels\"; Flags: external ignoreversion recursesubdirs; Components: language\polish
+; Localization - Portuguese (not tested)
+Source: "{code:GetSourceDrive}Gamedata\World\Sound\Portuguese\*"; DestDir: "{app}\Gamedata\World\Sound"; Flags: external ignoreversion recursesubdirs; Components: language\portuguese
+Source: "{code:GetSourceDrive}LangData\Portuguese\world\levels\*"; DestDir: "{app}\Gamedata\World\levels\"; Flags: external ignoreversion recursesubdirs; Components: language\portuguese
+; Localization - Spanish (not tested)
+Source: "{code:GetSourceDrive}Gamedata\World\Sound\Spanish\*"; DestDir: "{app}\Gamedata\World\Sound"; Flags: external ignoreversion recursesubdirs; Components: language\spanish
+Source: "{code:GetSourceDrive}LangData\Spanish\world\levels\*"; DestDir: "{app}\Gamedata\World\levels\"; Flags: external ignoreversion recursesubdirs; Components: language\spanish
 
 ; EXE folder
 Source: "{code:GetSourceDrive}EXE\GLI.ini"; DestDir: "{app}"; Flags: external ignoreversion
